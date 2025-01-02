@@ -1,0 +1,236 @@
+/* Basic reset for margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  color: #333;
+  overflow: hidden; /* Prevent scrolling issues on mobile */
+}
+
+/* Main container styling */
+.container {
+  background-color: #fff;
+  padding: 30px; /* Reduced padding for a smaller box */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 380px; /* Reduced the max-width for a smaller container */
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  opacity: 0; /* Initially hidden to enable fade-in animation */
+  animation: fadeIn 0.5s forwards; /* Fade-in effect */
+}
+
+/* Hover effect for the container */
+.container:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+  transform: translateY(-5px); /* Slight upward movement when hovered */
+}
+
+/* Animation for fading in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Header section styling */
+header h1 {
+  font-size: 2rem; /* Reduced font size */
+  font-weight: bold;
+  color: #4CAF50;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+/* Paragraph description styling */
+header p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeInText 0.7s forwards 0.2s; /* Delay text fade-in */
+}
+
+/* Animation for text fading in */
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Calculator form styling */
+.calculator {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Reduced gap between form elements */
+}
+
+/* Input fields and button styling */
+input, select, button {
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease; /* Smooth transition for inputs and buttons */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Light shadow effect for form elements */
+}
+
+/* Styling for input field */
+input {
+  width: 100%;
+  border-color: #ddd;
+}
+
+input:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+  transform: translateY(-2px); /* Slight upward movement when focused */
+}
+
+/* Styling for dropdown (select) */
+select {
+  width: 100%;
+  border-color: #ddd;
+}
+
+select:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+  transform: translateY(-2px); /* Slight upward movement when focused */
+}
+
+/* Button styling */
+button {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow effect for button */
+}
+
+button:hover {
+  background-color: #45a049;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}
+
+/* Results section styling */
+.result {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #e0f7e0;
+  border-radius: 8px;
+  opacity: 0;
+  animation: fadeInText 0.7s forwards 0.5s; /* Fade-in animation with delay */
+}
+
+/* Error message section styling */
+.error {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #f44336;
+  padding: 10px;
+  background-color: #ffebee;
+  border-radius: 8px;
+  opacity: 0;
+  animation: fadeInText 0.7s forwards 0.7s; /* Fade-in animation with delay */
+}
+
+/* Responsive design: Mobile first */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  header h1 {
+    font-size: 1.8rem; /* Slightly smaller font for mobile */
+  }
+
+  header p {
+    font-size: 0.9rem;
+  }
+
+  /* Ensure form elements fit within the container */
+  input, select, button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .result {
+    font-size: 1rem;
+  }
+
+  .error {
+    font-size: 0.9rem;
+  }
+}
+
+/* Additional responsiveness for very large screens (desktop) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 600px;
+    padding: 50px;
+  }
+
+  header h1 {
+    font-size: 3rem;
+  }
+
+  .calculator {
+    gap: 25px;
+  }
+
+  input, select, button {
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  .result {
+    font-size: 1.4rem;
+  }
+}
+
+/* Additional responsiveness for tablet-sized screens */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .container {
+    max-width: 500px;
+    padding: 40px;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  input, select, button {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .result {
+    font-size: 1.2rem;
+  }
+}
