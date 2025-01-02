@@ -1,44 +1,45 @@
-// Handle Calculation
-document.getElementById("calculateBtn").addEventListener("click", async () => {
-  const numberInput = document.getElementById("number").value;
-  const method = document.getElementById("method").value;
-  const resultDiv = document.getElementById("result");
-  const errorDiv = document.getElementById("error");
-
-  // Clear previous results
-  resultDiv.textContent = "";
-  errorDiv.textContent = "";
-
-  // Validate Input
-  const number = parseInt(numberInput);
-  if (isNaN(number) || number < 0) {
+// script.js
+// Factorial Calculation Functions
+function factorialIterative(n) {
+    let result = 1;
+    for (let i = 2; i <= n; i++) {
+      result *= i;
+    }
+    return result;
+  }
+  
+  function factorialRecursive(n) {
+    if (n === 0 || n === 1) return 1;
+    return n * factorialRecursive(n - 1);
+  }
+  
+  // Handle Calculation
+  document.getElementById("calculateBtn").addEventListener("click", () => {
+    const numberInput = document.getElementById("number").value;
+    const method = document.getElementById("method").value;
+    const resultDiv = document.getElementById("result");
+    const errorDiv = document.getElementById("error");
+  
+    // Clear previous results
+    resultDiv.textContent = "";
+    errorDiv.textContent = "";
+  
+    // Validate Input
+    const number = parseInt(numberInput);
+    if (isNaN(number) || number < 0) {
       errorDiv.textContent = "Please enter a valid positive integer.";
       return;
-  }
-
-  // Make API Request to the backend
-  try {
-      const response = await fetch("http://localhost:5000/api/factorial", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ number, method }),
-      });
-
-      const data = await response.json();
-
-      // Handle non-OK responses (e.g., validation errors)
-      if (!response.ok) {
-          errorDiv.textContent = data.error || "An error occurred.";
-      } else {
-          // Add animation class dynamically
-          resultDiv.classList.add("result");
-          errorDiv.classList.add("error");
-
-          // Display Result
-          resultDiv.textContent = `The factorial of ${number} (${method} method) is ${data.result}.`;
-      }
-  } catch (error) {
-      // Handle network or server errors
-      errorDiv.textContent = "Server error. Please try again later.";
-  }
-});
+    }
+  
+    // Calculate Factorial
+    let result;
+    if (method === "iterative") {
+      result = factorialIterative(number);
+    } else if (method === "recursive") {
+      result = factorialRecursive(number);
+    }
+  
+    // Display Result
+    resultDiv.textContent = `The factorial of ${number} (${method} method) is ${result}.`;
+  });
+  
