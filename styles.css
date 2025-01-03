@@ -1,236 +1,434 @@
-/* Basic reset for margin and padding */
+/* Basic Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body styling */
+/* Body Styling */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f4f4f9;
+  background: linear-gradient(135deg, #2c2c2c, #1a1a1a); /* Dark grey to black gradient */
+  color: #f0f0f0; /* Light text */
+  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Navigation Bar Styling */
+nav {
+  background: linear-gradient(135deg, #333333, #000000); /* Dark grey to black gradient */
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+  list-style-type: none;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  color: #333;
-  overflow: hidden; /* Prevent scrolling issues on mobile */
+  flex-wrap: wrap;
 }
 
-/* Main container styling */
-.container {
-  background-color: #fff;
-  padding: 30px; /* Reduced padding for a smaller box */
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 380px; /* Reduced the max-width for a smaller container */
+nav li {
+  margin: 0 20px;
+}
+
+.nav-btn {
+  background-color: #444444; /* Dark grey button */
+  color: #f0f0f0; /* Light text */
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  border-radius: 50px; /* Oval shape */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  margin-top: 15px;
+}
+
+.nav-btn:hover, #commentSection button:hover {
+  background-color: #555555; /* Slightly lighter grey */
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Hamburger Icon for Mobile */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #f0f0f0; /* Light text */
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  nav.active ul {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  nav li {
+    margin: 10px 0;
+  }
+
+  .nav-btn {
+    padding: 10px 16px;
+    font-size: 1rem;
+    width: 100%;
+  }
+}
+
+/* Section Styling */
+.section {
+  display: none;
+  padding: 60px 20px;
   text-align: center;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  opacity: 0; /* Initially hidden to enable fade-in animation */
-  animation: fadeIn 0.5s forwards; /* Fade-in effect */
+  transition: transform 1s ease-in-out, opacity 0.3s ease;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  margin: 20px 0;
+  background-color: #333333; /* Dark grey sections */
+  opacity: 0; /* Start with hidden state */
 }
 
-/* Hover effect for the container */
-.container:hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
-  transform: translateY(-5px); /* Slight upward movement when hovered */
+.active {
+  display: block;
+  opacity: 1;
+  animation: fadeIn 1s ease-out; /* Fade-in animation */
 }
 
-/* Animation for fading in */
+/* Fade-In and Fade-Out Animation */
 @keyframes fadeIn {
-  from {
+  0% {
     opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
   }
 }
 
-/* Header section styling */
-header h1 {
-  font-size: 2rem; /* Reduced font size */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Home Section Alignment */
+#home.active {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* Card Styles */
+.card {
+  background-color: #444444; /* Dark grey background for cards */
+  border-radius: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Soft shadows */
+  margin-top: 12px;
+  padding: 14px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.card h3 {
+  font-size: 1.2rem;
   font-weight: bold;
-  color: #4CAF50;
+  margin-bottom: 15px;
+  color: #f0f0f0; /* Light color for headings */
+}
+
+.card p {
+  font-size: 1.0rem;
+  line-height: 1.2;
+  color: #b0b0b0; /* Lighter grey text */
+}
+
+.card code {
+  font-size: 1.2rem;
+  background-color: #444444; /* Dark background for code */
+  padding: 2px 6px;
+  border-radius: 6px;
+  color: #f0f0f0; /* Light text for code */
+}
+
+/* Hover Effect for Cards */
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  background-color: #555555; /* Slightly lighter grey background */
+  border: 2px solid #666666; /* Subtle border */
+  animation: glow 1s ease-in-out infinite;
+}
+
+/* Glow Effect Animation */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 12px rgba(22, 14, 14, 0.8); /* Light glow */
+    background-color: #444444;
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(22, 14, 14, 0.8);
+    background-color: #555555;
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(22, 14, 14, 0.8);
+    background-color: #444444;
+  }
+}
+
+/* Button Styling */
+#home .nav-btn {
+  margin-top: 10px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: #000000; /* Black button */
+  color: #f0f0f0;
+  border-radius: 60px;
+}
+
+/* Factorial Calculator Styling */
+.calculator {
+  background-color: #444444;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator input, .calculator select, .calculator button {
+  padding: 12px;
+  font-size: 16px;
+  margin: 15px 0;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 8px;
+  border: 2px solid #555555;
+  transition: border-color 0.3s, box-shadow 0.3s ease;
+}
+
+.calculator input:focus, .calculator select:focus {
+  border-color: #777777;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4); /* White glow */
+}
+
+.calculator button {
+  background-color: #222222; /* Darker grey for buttons */
+  color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s ease;
+  border-radius: 8px;
+  padding: 12px;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.calculator button:hover {
+  background-color: #000000; /* Slightly lighter grey on hover */
+  transform: scale(1.05);
+}
+
+#result, #error {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#error {
+  background-color: rgba(229, 57, 53, 0.1); /* Light red background */
+  color: #e53935; /* Red error color */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Styling for Blog Posts Section */
+#posts {
+  background-color: #2c2a2a; /* Light gray background */
+  padding: 20px;
+  border-radius: 100px;
+}
+
+/* Styling for each individual post */
+.post {
+  background-color: rgb(0, 0, 0);
+  border: 1px solid #ecdada;
+  border-radius: 50px;
+  padding: 15px;
+  margin: 20px 0;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for Post Titles */
+.post h3 {
+  font-size: 1.5em;
+  color: #333;
   margin-bottom: 10px;
+}
+
+.post h3 a {
+  text-decoration: none;
+  color: #333;
   transition: color 0.3s ease;
 }
 
-/* Paragraph description styling */
-header p {
-  font-size: 1rem;
+.post h3 a:hover {
+  color: #007BFF; /* Blue color on hover */
+}
+
+/* Styling for Post Content */
+.post p {
+  font-size: 1em;
   color: #666;
-  margin-bottom: 20px;
-  opacity: 0;
-  animation: fadeInText 0.7s forwards 0.2s; /* Delay text fade-in */
+  line-height: 1.2;
 }
 
-/* Animation for text fading in */
-@keyframes fadeInText {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Calculator form styling */
-.calculator {
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* Reduced gap between form elements */
-}
-
-/* Input fields and button styling */
-input, select, button {
-  padding: 12px;
-  font-size: 16px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  outline: none;
-  transition: all 0.3s ease; /* Smooth transition for inputs and buttons */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Light shadow effect for form elements */
-}
-
-/* Styling for input field */
-input {
-  width: 100%;
-  border-color: #ddd;
-}
-
-input:focus {
-  border-color: #4CAF50;
-  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
-  transform: translateY(-2px); /* Slight upward movement when focused */
-}
-
-/* Styling for dropdown (select) */
-select {
-  width: 100%;
-  border-color: #ddd;
-}
-
-select:focus {
-  border-color: #4CAF50;
-  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
-  transform: translateY(-2px); /* Slight upward movement when focused */
-}
-
-/* Button styling */
-button {
-  background-color: #4CAF50;
+/* Styling for the "Go to Comments" Button */
+.nav-btn {
+  background-color: #171817;
   color: white;
-  cursor: pointer;
+  padding: 10px 20px;
   border: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow effect for button */
-}
-
-button:hover {
-  background-color: #45a049;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
-}
-
-/* Results section styling */
-.result {
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
   margin-top: 20px;
-  font-size: 1.2rem;
-  color: #333;
-  font-weight: bold;
-  padding: 10px;
-  background-color: #e0f7e0;
-  border-radius: 8px;
-  opacity: 0;
-  animation: fadeInText 0.7s forwards 0.5s; /* Fade-in animation with delay */
 }
 
-/* Error message section styling */
-.error {
-  margin-top: 10px;
+.nav-btn:hover {
+  background-color: #724848;
+}
+
+/* Responsive Design: Blog Post Layout */
+.posts {
+  align-items: center;
+  display: -ms-grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .posts {
+      grid-template-columns: 1fr;
+  }
+}
+
+/* Comment Section Styling */
+#commentSection {
+  background-color: #444444;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#commentSection textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  height: 150px;
+  border-radius: 8px;
+  border: 2px solid #555555;
   font-size: 1rem;
-  color: #f44336;
-  padding: 10px;
-  background-color: #ffebee;
+}
+
+#commentSection button {
+  padding: 12px 25px;
+  font-size: 16px;
+  background-color: #222222; /* Darker button */
+  color: #f0f0f0;
+  border: none;
+  cursor: pointer;
   border-radius: 8px;
-  opacity: 0;
-  animation: fadeInText 0.7s forwards 0.7s; /* Fade-in animation with delay */
 }
 
-/* Responsive design: Mobile first */
-@media (max-width: 600px) {
-  .container {
-    padding: 20px;
-    max-width: 90%;
-  }
+#commentSection button:hover {
+  background-color: #333333; /* Slightly lighter grey */
+  transform: scale(1.05);
+}
 
-  header h1 {
-    font-size: 1.8rem; /* Slightly smaller font for mobile */
-  }
-
-  header p {
-    font-size: 0.9rem;
-  }
-
-  /* Ensure form elements fit within the container */
-  input, select, button {
+/* Mobile */
+@media (max-width: 480px) {
+  .calculator input, .calculator select, .calculator button {
+    width: 90%;
     font-size: 14px;
+  }
+
+  .nav-btn {
     padding: 10px;
+    font-size: 14px;
   }
 
-  .result {
-    font-size: 1rem;
+  .posts .post {
+    width: 95%;
+    margin: 10px;
   }
 
-  .error {
-    font-size: 0.9rem;
-  }
-}
-
-/* Additional responsiveness for very large screens (desktop) */
-@media (min-width: 1200px) {
-  .container {
-    max-width: 600px;
-    padding: 50px;
-  }
-
-  header h1 {
-    font-size: 3rem;
-  }
-
-  .calculator {
-    gap: 25px;
-  }
-
-  input, select, button {
-    font-size: 18px;
-    padding: 15px;
-  }
-
-  .result {
-    font-size: 1.4rem;
+  #commentSection textarea {
+    height: 120px;
   }
 }
 
-/* Additional responsiveness for tablet-sized screens */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .container {
-    max-width: 500px;
-    padding: 40px;
-  }
-
-  header h1 {
-    font-size: 2.5rem;
-  }
-
-  input, select, button {
+/* Tablet */
+@media (min-width: 481px) and (max-width: 768px) {
+  .nav-btn {
     font-size: 16px;
-    padding: 12px;
   }
 
-  .result {
-    font-size: 1.2rem;
+  .calculator input, .calculator select, .calculator button {
+    width: 85%;
+    font-size: 15px;
+  }
+
+  .posts .post {
+    width: 90%;
+  }
+
+  #commentSection button {
+    width: 100%;
+  }
+
+  .posts .post h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Large Screens and Desktop */
+@media (min-width: 769px) {
+  .calculator input, .calculator select, .calculator button {
+    width: 350px;
+  }
+
+  .posts .post {
+    width: 70%;
+    margin: 30px 0;
   }
 }

@@ -1,54 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- Meta tags for character encoding and viewport settings -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Page Title -->
-  <title>Factorial Calculator</title>
-
-  <!-- Link to external CSS for styling -->
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Calculator Blog</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-  <!-- Main Container for the content -->
-  <div class="container">
-    
-    <!-- Header Section -->
-    <header>
-      <h1>Factorial Calculator</h1>
-      <p>Calculate the factorial of a given number using either iterative or recursive methods.</p>
-    </header>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="hamburger" id="hamburger-menu">&#9776;</div>
+        <ul>
+            <li><button class="nav-btn" onclick="showSection('home')">Home</button></li>
+            <li><button class="nav-btn" onclick="showSection('calculator')">Factorial Calculator</button></li>
+            <li><button class="nav-btn" onclick="showSection('posts')">Blog Posts</button></li>
+            <li><button class="nav-btn" onclick="showSection('comments')">Comments</button></li>
+        </ul>
+    </nav>
 
-    <!-- Calculator Form -->
-    <section class="calculator">
-      <!-- Input for number -->
-      <label for="number">Enter a number:</label>
-      <input type="number" id="number" placeholder="Enter a positive integer" />
+    <!-- Sections -->
+    <div id="home" class="section active">
+        <h3>Welcome to the Factorial Calculator Blog</h3>
+        <p>Explore our site and calculate factorials easily!</p>
 
-      <!-- Dropdown for choosing the method -->
-      <label for="method">Choose Method:</label>
-      <select id="method">
-        <option value="iterative">Iterative</option>
-        <option value="recursive">Recursive</option>
-      </select>
+        <!-- Cards for Info -->
+        <div class="card">
+            <h4>What is a Factorial?</h4>
+            <p>A factorial is a mathematical function that multiplies a number by every integer below it, down to 1. It
+                is commonly denoted by an exclamation mark.</p>
+        </div>
 
-      <!-- Button to trigger the calculation -->
-      <button id="calculateBtn">Calculate</button>
-    </section>
+        <div class="card">
+            <h4>Factorial Formula</h4>
+            <p>The general formula for calculating the factorial of a number <code>n</code> is:
+                <code>n! = n × (n - 1) × (n - 2) × ... × 1</code>
+            </p>
+        </div>
 
-    <!-- Results Section -->
-    <section id="result" class="result"></section>
+        <div class="card">
+            <h4>History of Factorials</h4>
+            <p>The modern notation of the factorial symbol "<code>!</code>" was introduced by the French mathematician
+                <strong>Christian Kramp</strong> in 1808.
+            </p>
+        </div>
 
-    <!-- Error Message Section -->
-    <section id="error" class="error"></section>
+        <button class="nav-btn" onclick="showSection('calculator')">Go to Calculator</button>
+    </div>
 
-  </div>
+    <div id="calculator" class="section">
+        <h2>Factorial Calculator</h2>
+        <div class="calculator">
+            <input type="number" id="number" placeholder="Enter a number" aria-label="Enter a number" />
+            <select id="method" aria-label="Select factorial calculation method">
+                <option value="iterative">Iterative</option>
+                <option value="recursive">Recursive</option>
+            </select>
+            <button id="calculateBtn">Calculate</button>
+            <div id="result" aria-live="polite"></div>
+            <div id="error" aria-live="assertive"></div>
+        </div>
+        <button class="nav-btn" onclick="showSection('posts')">Go to Blog Posts</button>
+    </div>
 
-  <!-- External JavaScript File for Logic -->
-  <script src="script.js"></script>
+    <div id="posts" class="section">
+        <h2>Blog Posts</h2>
+        <div class="posts">
+            <!-- Blog Post 1 -->
+            <div class="post">
+                <h3>Understanding Factorial Calculations</h3>
+                <p>In this blog post, we dive deep into the different approaches to calculating factorials. Factorials
+                    can be computed either iteratively or recursively. Both methods have their pros and cons depending
+                    on the scenario. An iterative approach involves using a loop to calculate the factorial of a number,
+                    while a recursive approach uses the function calling itself to achieve the same result.</p>
+                <p>Factorial calculations are fundamental in various algorithms, particularly in combinatorics,
+                    probability, and number theory. Understanding these methods is key to solving complex mathematical
+                    problems efficiently. We also explore how large numbers can be factored quickly using these
+                    techniques, and the importance of choosing the right approach for your problem.</p>
+            </div>
 
+            <!-- Blog Post 2 -->
+            <div class="post">
+                <h3>Why is Factorial Important in Programming?</h3>
+                <p>Factorial functions are used in many programming algorithms, particularly those that deal with
+                    combinations and permutations. In mathematics, the factorial of a number <code>n!</code> is the
+                    product of all positive integers less than or equal to <code>n</code>. In programming, the factorial
+                    function is often used in combinatorics, cryptography, and calculating binomial coefficients, among
+                    other applications.</p>
+                <p>By exploring how to calculate factorials programmatically, you gain insights into recursive functions
+                    and iterative loops. This blog post covers different ways to implement factorial functions in
+                    programming languages such as Python, JavaScript, and C++.</p>
+            </div>
+
+            <!-- Blog Post 3 -->
+            <div class="post">
+                <h3>Applications of Factorial in Real Life</h3>
+                <p>Factorials have broad applications in the real world, especially in statistics, combinatorics, and
+                    probability theory. For example, factorials are used to calculate the number of ways to arrange a
+                    set of objects, which is essential in probability problems and game theory. You’ll find factorials
+                    in everyday applications like calculating probabilities in card games or predicting the outcome of
+                    random events.</p>
+                <p>Beyond games, factorials are used in data analysis, cryptography, and even machine learning
+                    algorithms where permutations and combinations are needed to evaluate different model parameters.
+                </p>
+            </div>
+
+            <!-- Blog Post 4 -->
+            <div class="post">
+                <h3>Factorial in Probability and Statistics</h3>
+                <p>In probability and statistics, factorials are crucial when calculating permutations and combinations.
+                    The formula for permutations, <code>nPr = n! / (n - r)!</code>, is used to determine how many
+                    different ways you can arrange <code>r</code> objects from a set of <code>n</code> objects.
+                    Similarly, combinations use factorials to calculate the number of ways to select items from a larger
+                    set where the order of selection doesn’t matter.</p>
+                <p>Understanding how to manipulate factorials is important for statisticians, particularly when dealing
+                    with large datasets and calculating probabilities for various outcomes.</p>
+            </div>
+        </div>
+        <button class="nav-btn" onclick="showSection('comments')">Go to Comments</button>
+    </div>
+
+
+    <button class="nav-btn" onclick="showSection('comments')">Go to Comments</button>
+    </div>
+
+    <div id="comments" class="section">
+        <h2>Leave a Comment</h2>
+        <div id="commentSection">
+            <textarea placeholder="Your comment here..." aria-label="Write a comment"></textarea>
+            <button>Post Comment</button>
+        </div>
+        <button class="nav-btn" onclick="showSection('home')">Go to Home</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
