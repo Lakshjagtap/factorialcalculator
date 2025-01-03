@@ -30,12 +30,24 @@ document.getElementById("calculateBtn")?.addEventListener("click", () => {
     return;
   }
 
+  // Optional: Additional checks for large numbers
+  if (number > 170) {
+    errorDiv.textContent = "The number is too large, results may not be accurate.";
+    return;
+  }
+
   // Calculate Factorial
   let result;
-  if (method === "iterative") {
-    result = factorialIterative(number);
-  } else if (method === "recursive") {
-    result = factorialRecursive(number);
+  try {
+    if (method === "iterative") {
+      result = factorialIterative(number);
+    } else if (method === "recursive") {
+      result = factorialRecursive(number);
+    }
+  } catch (error) {
+    errorDiv.textContent = "An error occurred while calculating the factorial.";
+    console.error(error);
+    return;
   }
 
   // Display Result
@@ -52,7 +64,9 @@ function showSection(sectionId) {
 
   // Show the clicked section
   const targetSection = document.getElementById(sectionId);
-  targetSection.classList.add("active");
+  if (targetSection) {
+    targetSection.classList.add("active");
+  }
 
   // Close the hamburger menu if it's visible (for small screens)
   if (window.innerWidth <= 768) {

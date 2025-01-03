@@ -9,7 +9,7 @@
 body {
   font-family: 'Arial', sans-serif;
   background: linear-gradient(135deg, #2c2c2c, #1a1a1a); /* Dark grey to black gradient */
-  color: #f0f0f0; /* Light text */
+  color: #e0e0e0; /* Lighter text for readability */
   overflow-x: hidden;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -110,22 +110,12 @@ nav li {
   animation: fadeIn 1s ease-out; /* Fade-in animation */
 }
 
-/* Fade-In and Fade-Out Animation */
 @keyframes fadeIn {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }
 
@@ -163,7 +153,7 @@ nav li {
 
 .card p {
   font-size: 1.0rem;
-  line-height: 1.2;
+  line-height: 1.5; /* Improved line height for readability */
   color: #b0b0b0; /* Lighter grey text */
 }
 
@@ -184,18 +174,17 @@ nav li {
   animation: glow 1s ease-in-out infinite;
 }
 
-/* Glow Effect Animation */
 @keyframes glow {
   0% {
-    box-shadow: 0 0 12px rgba(22, 14, 14, 0.8); /* Light glow */
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.6); /* Lighter glow */
     background-color: #444444;
   }
   50% {
-    box-shadow: 0 0 20px rgba(22, 14, 14, 0.8);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Stronger glow */
     background-color: #555555;
   }
   100% {
-    box-shadow: 0 0 12px rgba(22, 14, 14, 0.8);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.6); /* Lighter glow */
     background-color: #444444;
   }
 }
@@ -309,7 +298,7 @@ nav li {
 .post p {
   font-size: 1em;
   color: #666;
-  line-height: 1.2;
+  line-height: 1.5; /* Improved line height */
 }
 
 /* Styling for the "Go to Comments" Button */
@@ -330,8 +319,7 @@ nav li {
 
 /* Responsive Design: Blog Post Layout */
 .posts {
-  align-items: center;
-  display: -ms-grid;
+  display: -moz-grid-group;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
@@ -373,62 +361,4 @@ nav li {
 #commentSection button:hover {
   background-color: #333333; /* Slightly lighter grey */
   transform: scale(1.05);
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-  .calculator input, .calculator select, .calculator button {
-    width: 90%;
-    font-size: 14px;
-  }
-
-  .nav-btn {
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .posts .post {
-    width: 95%;
-    margin: 10px;
-  }
-
-  #commentSection textarea {
-    height: 120px;
-  }
-}
-
-/* Tablet */
-@media (min-width: 481px) and (max-width: 768px) {
-  .nav-btn {
-    font-size: 16px;
-  }
-
-  .calculator input, .calculator select, .calculator button {
-    width: 85%;
-    font-size: 15px;
-  }
-
-  .posts .post {
-    width: 90%;
-  }
-
-  #commentSection button {
-    width: 100%;
-  }
-
-  .posts .post h3 {
-    font-size: 1.3rem;
-  }
-}
-
-/* Large Screens and Desktop */
-@media (min-width: 769px) {
-  .calculator input, .calculator select, .calculator button {
-    width: 350px;
-  }
-
-  .posts .post {
-    width: 70%;
-    margin: 30px 0;
-  }
 }
